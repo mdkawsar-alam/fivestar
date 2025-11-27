@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
+/* Custom Color Palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary-black: #0F0F0F;
+  --color-saudi-green: #00843D;
+  --color-steel-silver: #CED4DA;
+  --color-white: #FFFFFF;
+  --color-accent-blue: #3B82F6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Global Animations */
+/* header */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
 }
+/*  */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInDown {
+	from {
+		opacity: 0;
+		transform: translateY(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+/* Apply Animations */
+.animate-fade-in {
+	animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+	animation: slideInUp 0.6s ease-out;
+}
+
+.animate-slide-down {
+	animation: slideInDown 0.6s ease-out;
+}
+
+.animate-slide-left {
+	animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-right {
+	animation: slideInRight 0.6s ease-out;
+}
+
+.animate-scale-in {
+	animation: scaleIn 0.4s ease-out;
+}
+
+.animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+	animation: shimmer 2s infinite;
+}
+
+/* Smooth Scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Global Styles */
+
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Source Sans Pro",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
+
+/* Button Animations */
+button {
+	transition: all 0.3s ease;
+}
+button:hover {
+	transform: scale(1.05);
+}
+
+/* Link Animations */
+a {
+	transition: all 0.3s ease;
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+	transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Text */
+@media (max-width: 640px) {
+	h1 {
+    font-size: 1.875rem;
+	}
+	h2 {
+    font-size: 1.5rem;
+	}
+	h3 {
+    font-size: 1.25rem;
+	}
+}
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+	background: linear-gradient(to right, rgb(37, 99, 235), rgb(29, 78, 216));
+}
+.bg-gradient-success {
+	background: linear-gradient(to right, rgb(34, 197, 94), rgb(21, 128, 61));
+}
+/* Shadow Effects */
+.shadow-glow {
+	box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+.shadow-glow-green {
+	box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Loading Animation */
+.loading {
+	animation: shimmer 2s infinite;
+	background: linear-gradient(
+		90deg,
+		#f0f0f0 25%,
+		#e0e0e0 50%,
+		#f0f0f0 75%
+	);
+	background-size: 1000px 100%;
+}
+

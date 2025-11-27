@@ -1,0 +1,7 @@
+export { HeroCarousel } from "./HeroCarousel"
+export { FeaturedProducts } from "./FeaturedProducts"
+export { ServicesSection } from "./ServicesSection"
+export { TestimonialsSection } from "./TestimonialsSection"
+export { WhyChooseUs } from "./WhyChooseUs"
+export { CTASection } from "./CTASection"
+export { FAQSection } from "./FAQSection"
