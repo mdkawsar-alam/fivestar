@@ -1,6 +1,6 @@
 // Shared constants and utilities for order management
 
-export const WHATSAPP_NUMBER = "966XXXXXXXXX" // Replace with your WhatsApp number
+export const WHATSAPP_NUMBER = "+966503069108" // Replace with your WhatsApp number
 export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`
 
 export interface Product {

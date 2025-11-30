@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import { WHATSAPP_NUMBER, CONTACT_EMAIL } from "@/lib/constants"
+import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             {/* WhatsApp */}
             <div className="bg-slate-50 p-8 rounded-lg">
-              <div className="text-4xl mb-4">💬</div>
+              <FaWhatsapp className="text-4xl mb-4 text-green-600" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">WhatsApp</h3>
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -64,27 +65,27 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="text-green-600 hover:text-green-700 font-semibold text-lg break-all"
               >
-                +966 XX XXXX XXXX
+                +966 50 306 9108
               </a>
               <p className="text-gray-600 text-sm mt-2">24/7 Support Available</p>
             </div>
 
             {/* Phone */}
             <div className="bg-slate-50 p-8 rounded-lg">
-              <div className="text-4xl mb-4">☎️</div>
+              <FaPhone className="text-4xl mb-4 text-[#00843D]" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">Phone</h3>
               <a
-                href="tel:+966XXXXXXXXX"
+                href="tel:+966 50 306 9108"
                 className="text-[#00843D] hover:text-[#006630] font-semibold text-lg"
               >
-                +966 XX XXXX XXXX
-              </a>
+                +966 50 306 9108        
+                      </a>
               <p className="text-gray-600 text-sm mt-2">Saturday - Thursday: 8 AM - 10 PM</p>
             </div>
 
             {/* Email */}
             <div className="bg-slate-50 p-8 rounded-lg">
-              <div className="text-4xl mb-4">📧</div>
+              <FaEnvelope className="text-4xl mb-4 text-[#00843D]" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">Email</h3>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -97,15 +98,15 @@ export default function ContactPage() {
 
             {/* Location */}
             <div className="bg-slate-50 p-8 rounded-lg">
-              <div className="text-4xl mb-4">📍</div>
+              <FaMapMarkerAlt className="text-4xl mb-4 text-red-600" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">Location</h3>
-              <p className="text-gray-700 font-semibold">Riyadh, Saudi Arabia</p>
-              <p className="text-gray-600 text-sm mt-2">Serving all regions of Saudi Arabia</p>
+              <p className="text-gray-700 font-semibold">Al Jishah, Al-Ahsa Governorate</p>
+              <p className="text-gray-600 text-sm mt-2">Eastern Province, Saudi Arabia</p>
             </div>
 
             {/* Hours */}
             <div className="bg-slate-50 p-8 rounded-lg">
-              <div className="text-4xl mb-4">🕐</div>
+              <FaClock className="text-4xl mb-4 text-blue-600" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">Working Hours</h3>
               <ul className="text-gray-700 space-y-1">
                 <li><strong>Sat - Thu:</strong> 8 AM - 10 PM</li>
@@ -195,11 +196,8 @@ export default function ContactPage() {
             </div>
 
             {/* Map Section */}
-            <div className="mt-8 bg-gray-300 rounded-lg overflow-hidden h-64 flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-700 mb-2">📍 Riyadh, Saudi Arabia</p>
-                <p className="text-sm text-gray-600">[Google Map Embed]</p>
-              </div>
+            <div className="mt-8 bg-gray-300 rounded-lg overflow-hidden h-96">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2848.8714176641633!2d49.76813889999999!3d25.387972199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDIzJzE2LjciTiA0OcKwNDYnMDUuMyJF!5e1!3m2!1sen!2sbd!4v1764523377208!5m2!1sen!2sbd" width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
@@ -219,7 +217,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="block p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow text-center border-t-4 border-green-500"
             >
-              <div className="text-5xl mb-4">💬</div>
+              <FaWhatsapp className="text-5xl mb-4 text-green-600 mx-auto" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Chat on WhatsApp
               </h3>
@@ -236,7 +234,7 @@ export default function ContactPage() {
               }}
               className="block p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow text-center border-t-4 border-[#00843D]"
             >
-              <div className="text-5xl mb-4">📧</div>
+              <FaEnvelope className="text-5xl mb-4 text-[#00843D] mx-auto" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Email Us
               </h3>

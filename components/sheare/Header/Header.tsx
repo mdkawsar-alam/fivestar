@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -43,7 +44,7 @@ const Header: React.FC = () => {
 
         {/* WhatsApp Button - Right (Desktop) */}
         <a
-          href="https://wa.me/966XXXXXXXXX"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:block bg-[#00843D] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#006630] transition shrink-0"
@@ -77,7 +78,7 @@ const Header: React.FC = () => {
         <nav className="md:hidden bg-white border-t border-[#CED4DA] shadow-md flex flex-col py-2">
           <NavLinks mobile onItemClick={() => setOpen(false)} />
           <a
-            href="https://wa.me/966XXXXXXXXX"
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
             className="mx-4 my-2 bg-[#00843D] text-white py-2 px-4 rounded-lg text-center font-semibold hover:bg-[#006630] transition"

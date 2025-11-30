@@ -3,7 +3,7 @@ import { servicesData, type Service } from "./data/services"
 import { testimonialsData, type Testimonial } from "./data/testimonials"
 import { heroSlides } from "./data/hero"
 
-export const WHATSAPP_NUMBER = "+966XXXXXXXXX"
+export const WHATSAPP_NUMBER = "+966503069108"
 export const CONTACT_EMAIL = "support@fivestarsa.com"
 
 export type TeamMember = {
