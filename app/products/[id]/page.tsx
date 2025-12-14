@@ -3,18 +3,18 @@ import type { Metadata } from "next"
 import { productsData, type Product } from "@/lib/data/products"
 import { WHATSAPP_NUMBER } from "@/lib/constants"
 
-type Props = { params: { id: string } }
+type Props = { params: Promise<{ id: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const id = Array.isArray(params.id) ? params.id[0] : params.id
+  const { id } = await params
   const product = productsData.find((p) => p.id === id)
   if (!product) return { title: "Product not found" }
 
   return {
-    title: `${product.name_en} | Fivester`,
+    title: `${product.name_en} / ${product.name_ar} | Fivester`,
     description: product.description,
     openGraph: {
-      title: `${product.name_en} | Fivester`,
+      title: `${product.name_en} / ${product.name_ar} | Fivester`,
       description: product.description,
       images: [product.image],
       url: `https://fivestarsa.com/products/${product.id}`,
@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function ProductPage({ params }: Props) {
-  const id = Array.isArray(params.id) ? params.id[0] : params.id
+export default async function ProductPage({ params }: Props) {
+  const { id } = await params
   const product = productsData.find((p) => p.id === id) as Product | undefined
   if (!product) return notFound()
 
   const whatsappMessage = encodeURIComponent(
-    `Hello, I'm interested in *${product.name_en}* (ID: ${product.id}). Price: ${product.currency} ${product.price}. Please provide availability and next steps.`
+    `Hello, I'm interested in *${product.name_en} / ${product.name_ar}* (ID: ${product.id}). Price: ${product.currency} ${product.price}. Please provide availability and next steps.`
   )
   const phoneNumberDigits = WHATSAPP_NUMBER.replace(/\D/g, "")
   const whatsappUrl = `https://wa.me/${phoneNumberDigits}?text=${whatsappMessage}`
@@ -42,7 +42,7 @@ export default function ProductPage({ params }: Props) {
             <div className="w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
               <img
                 src={product.image}
-                alt={product.name_en}
+                alt={`${product.name_en} / ${product.name_ar}`}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -50,7 +50,7 @@ export default function ProductPage({ params }: Props) {
               {/* Thumbnails - placeholder duplicates for now */}
               {[0, 1, 2].map((i) => (
                 <div key={i} className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden">
-                  <img src={product.image} alt={`${product.name_en} ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={product.image} alt={`${product.name_en} / ${product.name_ar} ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -58,7 +58,8 @@ export default function ProductPage({ params }: Props) {
 
           {/* Product details */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{product.name_en}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{product.name_en}</h1>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-4" dir="rtl">{product.name_ar}</h2>
             <p className="text-2xl text-[#00843D] font-bold mb-4">{product.currency} {product.price}</p>
             <p className="text-gray-700 mb-6">{product.description}</p>
 
@@ -145,7 +146,7 @@ export default function ProductPage({ params }: Props) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Product",
-            name: product.name_en,
+            name: `${product.name_en} / ${product.name_ar}`,
             image: [product.image],
             description: product.description,
             sku: product.id,

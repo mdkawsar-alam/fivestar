@@ -47,9 +47,12 @@ export function FeaturedProducts() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">
                   {product.name_en}
                 </h3>
+                <h4 className="text-lg font-semibold text-gray-700 mb-2" dir="rtl">
+                  {product.name_ar}
+                </h4>
                 <p className="text-gray-600 text-sm mb-4">
                   {product.description}
                 </p>
