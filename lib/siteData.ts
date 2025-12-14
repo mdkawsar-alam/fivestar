@@ -51,10 +51,11 @@ export const faqs: FAQItem[] = [
 ]
 
 export const socials = {
-  facebook: "https://facebook.com/fivestarsa",
-  instagram: "https://instagram.com/fivestarsa",
-  twitter: "https://twitter.com/fivestarsa",
-  linkedin: "https://www.linkedin.com/company/fivestarsa",
+  facebook: "https://www.facebook.com/share/1BEqM2MeES/",
+  instagram: "https://www.instagram.com/fivestarshopsa?igsh=azU5cTVsNmlyNnNx",
+  tiktok: "https://www.tiktok.com/@fivestar.hardware?_r=1&_t=ZS-92BzreMLZvs",
+  snapchat: "https://www.snapchat.com/add/fivestarhardwar?share_id=hsqMUVYzNzs&locale=en-US",
+  threads: "https://www.threads.com/@fivestarshopsa",
 }
 
 export const siteInfo = {

@@ -4,7 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import { WHATSAPP_NUMBER, CONTACT_EMAIL } from '@/lib/constants'
 import { socials } from '@/lib/siteData'
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaTiktok, FaSnapchat } from 'react-icons/fa6'
+import { FaHashtag } from 'react-icons/fa'
 
 const Footer = () => {
   return (
@@ -64,11 +65,14 @@ const Footer = () => {
               <a href={socials.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
                 <FaInstagram className="text-lg mr-2" /> Instagram
               </a>
-              <a href={socials.twitter} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
-                <FaTwitter className="text-lg mr-2" /> Twitter
+              <a href={socials.tiktok} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
+                <FaTiktok className="text-lg mr-2" /> TikTok
               </a>
-              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
-                <FaLinkedin className="text-lg mr-2" /> LinkedIn
+              <a href={socials.snapchat} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
+                <FaSnapchat className="text-lg mr-2" /> Snapchat
+              </a>
+              <a href={socials.threads} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition">
+                <FaHashtag className="text-lg mr-2" /> Threads
               </a>
             </div>
           </div>

@@ -1,18 +1,20 @@
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { productsData, type Product } from "@/lib/data/products"
+import { WHATSAPP_NUMBER } from "@/lib/constants"
 
 type Props = { params: { id: string } }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = productsData.find((p) => p.id === params.id)
+  const id = Array.isArray(params.id) ? params.id[0] : params.id
+  const product = productsData.find((p) => p.id === id)
   if (!product) return { title: "Product not found" }
 
   return {
-    title: `${product.name} | Fivester`,
+    title: `${product.name_en} | Fivester`,
     description: product.description,
     openGraph: {
-      title: `${product.name} | Fivester`,
+      title: `${product.name_en} | Fivester`,
       description: product.description,
       images: [product.image],
       url: `https://fivestarsa.com/products/${product.id}`,
@@ -21,13 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function ProductPage({ params }: Props) {
-  const product = productsData.find((p) => p.id === params.id) as Product | undefined
+  const id = Array.isArray(params.id) ? params.id[0] : params.id
+  const product = productsData.find((p) => p.id === id) as Product | undefined
   if (!product) return notFound()
 
   const whatsappMessage = encodeURIComponent(
-    `Hello, I'm interested in *${product.name}* (ID: ${product.id}). Price: ${product.price}. Please provide availability and next steps.`
+    `Hello, I'm interested in *${product.name_en}* (ID: ${product.id}). Price: ${product.currency} ${product.price}. Please provide availability and next steps.`
   )
-  const whatsappUrl = `https://wa.me/966XXXXXXXXX?text=${whatsappMessage}`
+  const phoneNumberDigits = WHATSAPP_NUMBER.replace(/\D/g, "")
+  const whatsappUrl = `https://wa.me/${phoneNumberDigits}?text=${whatsappMessage}`
 
   return (
     <section className="py-16 bg-white">
@@ -38,7 +42,7 @@ export default function ProductPage({ params }: Props) {
             <div className="w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
               <img
                 src={product.image}
-                alt={product.name}
+                alt={product.name_en}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -46,7 +50,7 @@ export default function ProductPage({ params }: Props) {
               {/* Thumbnails - placeholder duplicates for now */}
               {[0, 1, 2].map((i) => (
                 <div key={i} className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden">
-                  <img src={product.image} alt={`${product.name} ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={product.image} alt={`${product.name_en} ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -54,14 +58,15 @@ export default function ProductPage({ params }: Props) {
 
           {/* Product details */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
-            <p className="text-2xl text-[#00843D] font-bold mb-4">{product.price}</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{product.name_en}</h1>
+            <p className="text-2xl text-[#00843D] font-bold mb-4">{product.currency} {product.price}</p>
             <p className="text-gray-700 mb-6">{product.description}</p>
 
             <div className="mb-6">
               <h4 className="font-semibold mb-2">Key Features</h4>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 <li>Category: {product.category}</li>
+                <li>Subcategory: {product.subCategory}</li>
                 <li>Rating: {product.rating} ({product.reviews} reviews)</li>
                 <li>{product.inStock ? "In stock" : "Out of stock"}</li>
               </ul>
@@ -140,14 +145,14 @@ export default function ProductPage({ params }: Props) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Product",
-            name: product.name,
+            name: product.name_en,
             image: [product.image],
             description: product.description,
             sku: product.id,
             offers: {
               "@type": "Offer",
               price: product.price,
-              priceCurrency: "SAR",
+              priceCurrency: product.currency,
               availability: product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
               url: `https://fivestarsa.com/products/${product.id}`,
             },

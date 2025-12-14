@@ -1,16 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { productsData } from "@/lib/data/products"
+import { WHATSAPP_NUMBER } from "@/lib/constants"
 import Container from "@/components/Container"
 
 export function FeaturedProducts() {
-  const [activeCategory, setActiveCategory] = useState("electrical")
-  const categories = ["electrical", "sanitary", "tools"]
-  
-  const filtered = activeCategory === "all" 
-    ? productsData 
-    : productsData.filter(p => p.category === activeCategory)
+  // Show first 16 products on home page
+  const featuredProducts = productsData.slice(0, 16)
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white">
@@ -25,26 +23,9 @@ export function FeaturedProducts() {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-[#00843D] text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          ))}
-        </div>
-
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filtered.map((product, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+          {featuredProducts.map((product, idx) => (
             <div
               key={product.id}
               className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up"
@@ -54,7 +35,7 @@ export function FeaturedProducts() {
               <div className="relative h-64 bg-gray-200 overflow-hidden">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.name_en}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {product.inStock && (
@@ -67,7 +48,7 @@ export function FeaturedProducts() {
               {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {product.name}
+                  {product.name_en}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">
                   {product.description}
@@ -90,16 +71,27 @@ export function FeaturedProducts() {
                 {/* Price & CTA */}
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-[#00843D]">
-                    {product.price}
+                    {product.currency} {product.price}
                   </span>
-                  <a
-                    href="https://wa.me/966XXXXXXXXX"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Order
-                  </a>
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={`/products/${product.id}`}
+                      className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-sm"
+                    >
+                      View
+                    </Link>
+
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,"")}?text=${encodeURIComponent(
+                        `Hello, I'm interested in ${product.name_en} (ID: ${product.id}).`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 shadow-md"
+                    >
+                      Order
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

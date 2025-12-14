@@ -33,8 +33,12 @@ const Header: React.FC = () => {
     <header ref={ref} className="w-full bg-white border-b border-[#CED4DA] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-5 flex items-center justify-between gap-4">
         {/* Logo - Left */}
-        <Link href="/" className="text-[#0F0F0F] font-bold text-xl shrink-0">
-          Fivestar
+        <Link href="/" className="shrink-0">
+          <img
+            src="/logo.jpeg"
+            alt="Fivestar Logo"
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Nav - Center */}

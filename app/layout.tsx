@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://fivestarsa.com",
   },
+  icons: {
+    icon: "/logo.jpeg",
+    shortcut: "/logo.jpeg",
+    apple: "/logo.jpeg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -76,7 +81,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+      <head>
+        <link rel="icon" href="/logo.jpeg" type="image/jpeg" />
+        <link rel="shortcut icon" href="/logo.jpeg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/logo.jpeg" />
+      </head>
+      <body className={`${inter.variable} ${poppins.variable} antialiased`} suppressHydrationWarning={true}>
         <Header />
 
         <main className="">
