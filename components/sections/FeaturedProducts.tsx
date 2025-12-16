@@ -1,14 +1,24 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { useState, useEffect } from "react"
 import { productsData } from "@/lib/data/products"
-import { WHATSAPP_NUMBER } from "@/lib/constants"
+import { getRandomProducts } from "@/lib/utils"
 import Container from "@/components/Container"
+import { ProductCard } from "@/components/ProductCard"
 
 export function FeaturedProducts() {
-  // Show first 16 products on home page
-  const featuredProducts = productsData.slice(0, 16)
+  const [mounted, setMounted] = useState(false)
+  const [featuredProducts, setFeaturedProducts] = useState<any[]>([])
+
+  useEffect(() => {
+    setMounted(true)
+    // Show 16 random products from both electrical and sanitary categories
+    const randomProducts = getRandomProducts(productsData, 16)
+    setFeaturedProducts(randomProducts)
+  }, [])
+
+  // Show loading state or first 16 products while mounting
+  const displayProducts = mounted ? featuredProducts : productsData.slice(0, 16)
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white">
@@ -25,79 +35,13 @@ export function FeaturedProducts() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {featuredProducts.map((product, idx) => (
-            <div
+          {displayProducts.map((product, idx) => (
+            <ProductCard
               key={product.id}
-              className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-up"
-              style={{ animationDelay: `${idx * 0.1}s` }}
-            >
-              {/* Image Container */}
-              <div className="relative h-64 bg-gray-200 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name_en}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                {product.inStock && (
-                  <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    In Stock
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">
-                  {product.name_en}
-                </h3>
-                <h4 className="text-lg font-semibold text-gray-700 mb-2" dir="rtl">
-                  {product.name_ar}
-                </h4>
-                <p className="text-gray-600 text-sm mb-4">
-                  {product.description}
-                </p>
-
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={i < Math.floor(product.rating) ? "text-yellow-400" : "text-gray-300"}>
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-600">
-                    {product.rating} ({product.reviews} reviews)
-                  </span>
-                </div>
-
-                {/* Price & CTA */}
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-[#00843D]">
-                    {product.currency} {product.price}
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href={`/products/${product.id}`}
-                      className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-sm"
-                    >
-                      View
-                    </Link>
-
-                    <a
-                      href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,"")}?text=${encodeURIComponent(
-                        `Hello, I'm interested in ${product.name_en} (ID: ${product.id}).`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 shadow-md"
-                    >
-                      Order
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              product={product}
+              index={idx}
+              showViewButton={true}
+            />
           ))}
         </div>
 

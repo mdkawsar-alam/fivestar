@@ -201,4 +201,4 @@ export const GOOGLE_FORM_PRODUCT_ORDER = "https://docs.google.com/forms/d/YOUR_F
 export const GOOGLE_FORM_SERVICE_BOOKING = "https://docs.google.com/forms/d/YOUR_FORM_ID/viewform"
 
 // Contact Email
-export const CONTACT_EMAIL = "support@fivestarsa.com"
+export const CONTACT_EMAIL = "fivestarshopsa@gmail.com"

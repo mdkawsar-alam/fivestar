@@ -1,22 +1,29 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import type { Metadata } from "next"
 import { productsData } from "@/lib/data/products"
+import { shuffleArray } from "@/lib/utils"
 import { WHATSAPP_NUMBER } from "@/lib/constants"
+import { ProductCard } from "@/components/ProductCard"
 
 // Note: Metadata export doesn't work with "use client"
 // Client component for interactivity only
 
 
 export default function ProductsPage() {
-  const categories = ["all", "electrical"]
+  const categories = ["all", "electrical", "sanitary"]
   const [activeCategory, setActiveCategory] = useState("all")
   const [currentPage, setCurrentPage] = useState(1)
+  const [mounted, setMounted] = useState(false)
   const itemsPerPage = 12
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const filteredProducts = activeCategory === "all"
-    ? productsData
+    ? (mounted ? shuffleArray(productsData) : productsData)
     : productsData.filter(p => p.category === activeCategory)
 
   // Calculate pagination
@@ -83,51 +90,14 @@ export default function ProductsPage() {
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {currentProducts.map((product) => (
-              <div
+            {currentProducts.map((product, index) => (
+              <ProductCard
                 key={product.id}
-                className="bg-slate-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name_en}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                    {product.name_en}
-                  </h3>
-                  <h4 className="text-lg font-medium text-slate-700 mb-2" dir="rtl">
-                    {product.name_ar}
-                  </h4>
-                  {product.description && (
-                    <p className="text-gray-600 text-sm mb-3">
-                      {product.description}
-                    </p>
-                  )}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-green-600">
-                      {product.currency} {product.price}
-                    </span>
-                    {product.subCategory && (
-                      <span className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full capitalize">
-                        {product.subCategory}
-                      </span>
-                    )}
-                  </div>
-
-                  <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,"")}?text=${encodeURIComponent(
-                      `Hello, I'm interested in ${product.name_en} (ID: ${product.id}). Price: ${product.currency} ${product.price}.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    Order via WhatsApp
-                  </a>
-                </div>
-              </div>
+                product={product}
+                index={index}
+                showViewButton={false}
+                className="bg-slate-50 shadow-md hover:shadow-xl"
+              />
             ))}
           </div>
 

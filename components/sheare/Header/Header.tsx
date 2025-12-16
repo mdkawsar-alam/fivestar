@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { CartIcon } from "@/components/CartIcon";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -46,15 +47,18 @@ const Header: React.FC = () => {
           <NavLinks />
         </nav>
 
-        {/* WhatsApp Button - Right (Desktop) */}
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:block bg-[#00843D] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#006630] transition shrink-0"
-        >
-          WhatsApp
-        </a>
+        {/* WhatsApp Button & Cart - Right (Desktop) */}
+        <div className="hidden md:flex items-center gap-3 shrink-0">
+          <CartIcon />
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#00843D] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#006630] transition"
+          >
+            WhatsApp
+          </a>
+        </div>
 
         {/* Hamburger / Close (mobile) */}
         <button
@@ -81,14 +85,17 @@ const Header: React.FC = () => {
       {mounted && open && (
         <nav className="md:hidden bg-white border-t border-[#CED4DA] shadow-md flex flex-col py-2">
           <NavLinks mobile onItemClick={() => setOpen(false)} />
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-4 my-2 bg-[#00843D] text-white py-2 px-4 rounded-lg text-center font-semibold hover:bg-[#006630] transition"
-          >
-            WhatsApp
-          </a>
+          <div className="flex items-center gap-2 mx-4 my-2">
+            <CartIcon />
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-[#00843D] text-white py-2 px-4 rounded-lg text-center font-semibold hover:bg-[#006630] transition"
+            >
+              WhatsApp
+            </a>
+          </div>
         </nav>
       )}
     </header>

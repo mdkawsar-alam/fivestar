@@ -22,7 +22,7 @@ export const heroSlides = [
     title: "Sanitary & Plumbing Experts",
     subtitle: "Quick & reliable solutions",
     description: "Emergency support available round the clock",
-    image: "https://images.unsplash.com/photo-1585421514675-4cb1d56f0e9a?w=1200&h=600&fit=crop",
+    image: "1.jpg",
     cta: { text: "Get Help Now", href: "https://wa.me/966XXXXXXXXX" },
     badge: "💧 Professional Work"
   }
