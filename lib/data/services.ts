@@ -1,11 +1,31 @@
-export const servicesData = [
+import {
+  FiZap,
+  FiPlus,
+  FiTool,
+  FiDroplet,
+  FiHome,
+  FiShield
+} from "react-icons/fi"
+import type { IconType } from "react-icons"
+
+export type Service = {
+  id: string
+  name: string
+  description: string
+  category: "electrical" | "sanitary"
+  price: string
+  icon: IconType
+  features: string[]
+}
+
+export const servicesData: Service[] = [
   {
     id: "electrical-1",
     name: "Electrical Installation",
     description: "Professional home & commercial electrical installation",
     category: "electrical",
     price: "SAR 299-999",
-    icon: "⚡",
+    icon: FiZap,
     features: ["Licensed technicians", "Warranty included", "Emergency support"]
   },
   {
@@ -14,7 +34,7 @@ export const servicesData = [
     description: "Complete electrical wiring and circuit breaker installation",
     category: "electrical",
     price: "SAR 399-1299",
-    icon: "🔌",
+    icon: FiPlus, 
     features: ["Modern standards", "24/7 support", "10-year guarantee"]
   },
   {
@@ -23,7 +43,7 @@ export const servicesData = [
     description: "Custom lighting design and LED installation",
     category: "electrical",
     price: "SAR 199-799",
-    icon: "💡",
+    icon: FiZap, // ✅ reused (safe)
     features: ["Energy efficient", "Expert design", "Professional install"]
   },
   {
@@ -32,7 +52,7 @@ export const servicesData = [
     description: "Maintenance, troubleshooting and repair services",
     category: "electrical",
     price: "SAR 149-599",
-    icon: "🔧",
+    icon: FiTool,
     features: ["Quick response", "Fair pricing", "Quality assured"]
   },
   {
@@ -41,7 +61,7 @@ export const servicesData = [
     description: "Full plumbing system installation for residential & commercial",
     category: "sanitary",
     price: "SAR 399-1299",
-    icon: "🚿",
+    icon: FiDroplet,
     features: ["Certified plumbers", "Quality materials", "30-day guarantee"]
   },
   {
@@ -50,7 +70,7 @@ export const servicesData = [
     description: "Emergency pipe repair, leakage detection & water pressure solutions",
     category: "sanitary",
     price: "SAR 199-799",
-    icon: "💧",
+    icon: FiTool,
     features: ["Emergency 24/7", "No hidden charges", "Quick fix"]
   },
   {
@@ -59,7 +79,7 @@ export const servicesData = [
     description: "Installation of sinks, toilets, showers and bathroom fittings",
     category: "sanitary",
     price: "SAR 249-899",
-    icon: "🛁",
+    icon: FiHome,
     features: ["Premium quality", "Modern designs", "Professional service"]
   },
   {
@@ -68,9 +88,7 @@ export const servicesData = [
     description: "Installation, repair and maintenance of water heating systems",
     category: "sanitary",
     price: "SAR 299-999",
-    icon: "♨️",
+    icon: FiShield,
     features: ["Efficient systems", "Energy saving", "Warranty included"]
   }
 ]
-
-export type Service = typeof servicesData[0]

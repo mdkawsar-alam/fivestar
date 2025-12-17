@@ -1,36 +1,37 @@
 "use client"
 
+import { FiAward, FiTruck, FiUsers, FiDollarSign, FiShield, FiSmartphone } from "react-icons/fi"
 import Container from "@/components/Container"
 
 export function WhyChooseUs() {
   const reasons = [
     {
-      icon: "⭐",
+      icon: FiAward,
       title: "Premium Quality",
       description: "Only authentic, branded products with manufacturer warranty"
     },
     {
-      icon: "🚀",
+      icon: FiTruck,
       title: "Fast Delivery",
       description: "Same-day delivery in Riyadh, 1-3 days nationwide"
     },
     {
-      icon: "👨‍🔧",
+      icon: FiUsers,
       title: "Expert Team",
       description: "Certified technicians with years of professional experience"
     },
     {
-      icon: "💰",
+      icon: FiDollarSign,
       title: "Best Prices",
       description: "Competitive pricing with no hidden charges guaranteed"
     },
     {
-      icon: "🛡️",
+      icon: FiShield,
       title: "Warranty & Support",
       description: "30-day satisfaction guarantee with 24/7 customer support"
     },
     {
-      icon: "📱",
+      icon: FiSmartphone,
       title: "Easy to Order",
       description: "Simple ordering via WhatsApp or our mobile app"
     }
@@ -58,7 +59,9 @@ export function WhyChooseUs() {
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Icon */}
-              <div className="text-5xl mb-4">{reason.icon}</div>
+              <div className="text-5xl mb-4 text-blue-200">
+                <reason.icon />
+              </div>
 
               {/* Title */}
               <h3 className="text-2xl font-bold mb-3">

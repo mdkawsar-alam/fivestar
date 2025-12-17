@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import { FiZap, FiDroplet, FiTool, FiHome, FiShield } from "react-icons/fi"
+import Container from "../Container"
 import { servicesData } from "@/lib/data/services"
-import Container from "@/components/Container"
 
 export function ServicesSection() {
   const [activeCategory, setActiveCategory] = useState("electrical")
-  
   const filtered = servicesData.filter(s => s.category === activeCategory)
 
   return (
@@ -24,17 +24,21 @@ export function ServicesSection() {
 
         {/* Category Tabs */}
         <div className="flex justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
-          {["electrical", "sanitary"].map((cat) => (
+          {[
+            { key: "electrical", label: "Electrical", icon: FiZap },
+            { key: "sanitary", label: "Sanitary", icon: FiDroplet }
+          ].map(({ key, label, icon: Icon }) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
-                activeCategory === cat
+              key={key}
+              onClick={() => setActiveCategory(key)}
+              className={`flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 ${
+                activeCategory === key
                   ? "bg-[#00843D] text-white shadow-lg"
                   : "bg-white text-gray-700 border-2 border-gray-200 hover:border-[#00843D]"
               }`}
             >
-              {cat === "electrical" ? "⚡ Electrical" : "💧 Sanitary"}
+              <Icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+              {label}
             </button>
           ))}
         </div>
@@ -44,26 +48,24 @@ export function ServicesSection() {
           {filtered.map((service, idx) => (
             <div
               key={service.id}
-              className="bg-white rounded-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-fade-up"
+              className="bg-white rounded-lg p-8 border border-gray-100 transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 animate-fade-up group"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               {/* Icon & Title */}
               <div className="flex items-start gap-4 mb-4">
-                <div className="text-5xl">{service.icon}</div>
+                <div className="text-5xl text-[#00843D] transition-transform duration-500 group-hover:scale-110">
+                  <service.icon />
+                </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {service.name}
                   </h3>
-                  <p className="text-[#00843D] font-semibold">
-                    {service.price}
-                  </p>
+                  <p className="text-[#00843D] font-semibold">{service.price}</p>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 mb-6">
-                {service.description}
-              </p>
+              <p className="text-gray-600 mb-6">{service.description}</p>
 
               {/* Features */}
               <div className="space-y-3 mb-6">
@@ -98,13 +100,15 @@ export function ServicesSection() {
               { step: 3, title: "Quote", desc: "Fair pricing with no hidden charges" },
               { step: 4, title: "Service", desc: "Professional execution & support" }
             ].map((item) => (
-              <div key={item.step} className="text-center animate-fade-up" style={{ animationDelay: `${item.step * 0.1}s` }}>
+              <div
+                key={item.step}
+                className="text-center animate-fade-up"
+                style={{ animationDelay: `${item.step * 0.1}s` }}
+              >
                 <div className="w-16 h-16 bg-[#00843D] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">
-                  {item.title}
-                </h4>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
                 <p className="text-gray-600">{item.desc}</p>
               </div>
             ))}

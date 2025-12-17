@@ -1,95 +1,112 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
 import Header from "../components/sheare/Header/Header";
 import Footer from "../components/sheare/Footer";
 
+// Fonts
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  weight: ["300","400","600","700","800"],
+  weight: ["300", "400", "600", "700", "800"],
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
-  weight: ["400","600","700"],
+  weight: ["400", "600", "700"],
 });
 
+// SEO Metadata (Al Ahsa Focus)
 export const metadata: Metadata = {
-  title: "Fivester - Premium Quality Products & Services",
-  description: "Discover Fivester's premium quality products and services. Your trusted partner for excellence and innovation.",
-  keywords: "Fivester, quality products, services, premium, innovation",
+  title: "Hardware & Sanitary Products Supplier in Al Ahsa, Saudi Arabia | Fivester",
+  description:
+    "Buy premium hardware and sanitary products in Al Ahsa, Saudi Arabia. Electrical items, faucets, mixers, lighting & tools from trusted brands.",
+  keywords: [
+    // English
+    "hardware store Al Ahsa",
+    "sanitary products Al Ahsa",
+    "electrical hardware supplier Al Ahsa",
+    "sanitary ware shop Al Ahsa",
+    "bathroom fittings Al Ahsa",
+    "faucets and mixers Al Ahsa",
+    "hardware and sanitary supplier KSA",
+
+    // Arabic (Local SEO)
+    "محل أدوات صحية الأحساء",
+    "مواد صحية الأحساء",
+    "مواد كهربائية الأحساء",
+    "محل أدوات كهربائية الأحساء",
+    "خلاطات حمام الأحساء",
+    "أدوات سباكة الأحساء",
+    "مستلزمات حمامات الأحساء",
+    "متجر أدوات صحية في الأحساء",
+  ],
   metadataBase: new URL("https://fivestarsa.com"),
   alternates: {
     canonical: "https://fivestarsa.com",
   },
   icons: {
-    icon: "/logo.jpeg",
-    shortcut: "/logo.jpeg",
-    apple: "/logo.jpeg",
+    icon: "/favicon.jpeg",
+    shortcut: "/favicon.jpeg",
+    apple: "/favicon.jpeg",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://fivestarsa.com",
-    title: "Fivester - Premium Quality Products & Services",
-    description: "Discover Fivester's premium quality products and services.",
+    title:
+      "Hardware & Sanitary Products Supplier in Al Ahsa, Saudi Arabia | Fivester",
+    description:
+      "Premium hardware and sanitary products in Al Ahsa including electrical items, faucets, mixers, lighting & tools.",
     siteName: "Fivester",
     images: [
       {
         url: "https://fivestarsa.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Fivester",
+        alt: "Fivester Hardware & Sanitary Products Al Ahsa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fivester - Premium Quality Products & Services",
-    description: "Discover Fivester's premium quality products and services.",
+    title:
+      "Hardware & Sanitary Products Supplier in Al Ahsa, Saudi Arabia | Fivester",
+    description:
+      "Buy hardware and sanitary products in Al Ahsa. Quality electrical & bathroom solutions from trusted brands.",
     images: ["https://fivestarsa.com/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
   },
 };
 
-export const viewport = "width=device-width, initial-scale=1.0";
+// Viewport (Next.js 14 compliant)
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.jpeg" type="image/jpeg" />
-        <link rel="shortcut icon" href="/logo.jpeg" type="image/jpeg" />
-        <link rel="apple-touch-icon" href="/logo.jpeg" />
-      </head>
-      <body className={`${inter.variable} ${poppins.variable} antialiased`} suppressHydrationWarning={true}>
+      <body
+        className={`${inter.variable} ${poppins.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <Header />
 
-        <main className="">
+        <main className="min-h-screen">
           {children}
         </main>
 

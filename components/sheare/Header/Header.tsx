@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { CartIcon } from "@/components/CartIcon";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -35,11 +36,15 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-5 flex items-center justify-between gap-4">
         {/* Logo - Left */}
         <Link href="/" className="shrink-0">
-          <img
-            src="/logo.jpeg"
-            alt="Fivestar Logo"
-            className="h-10 w-auto"
-          />
+         <div className="relative w-16 h-8 md:w-20 md:h-14">
+  <Image
+    src="/updatelogo.png"
+    alt="Fivestar Logo"
+    fill
+    // className="object-contain"
+  />
+</div>
+
         </Link>
 
         {/* Desktop Nav - Center */}

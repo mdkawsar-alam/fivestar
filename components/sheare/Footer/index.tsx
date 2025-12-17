@@ -6,6 +6,7 @@ import { WHATSAPP_NUMBER, CONTACT_EMAIL } from '@/lib/constants'
 import { socials } from '@/lib/siteData'
 import { FaFacebook, FaInstagram, FaTiktok, FaSnapchat } from 'react-icons/fa6'
 import { FaHashtag } from 'react-icons/fa'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
@@ -15,7 +16,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Fivester</h3>
+               <Link href="/" className="shrink-0">
+         <div className="relative w-16 h-10 md:w-40 md:h-16">
+  <Image
+    src="/updatelogo.png"
+    alt="Fivestar Logo"
+    fill
+    className="object-contain"
+  />
+</div>
+
+        </Link>
             <p className="text-gray-400 text-sm mb-4">
               Premium hardware & electrical solutions for homes and businesses across Saudi Arabia.
             </p>

@@ -4,8 +4,8 @@ export const heroSlides = [
     title: "Your Hardware & Electrical Solutions",
     subtitle: "Professional service in Saudi Arabia",
     description: "Trusted by thousands of customers. Same-day delivery available.",
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=600&fit=crop",
-    cta: { text: "Order Now", href: "https://wa.me/966XXXXXXXXX" },
+    image: "/herosection/Electrical-Installation.webp",
+    cta: { text: "Order Now", href: "https://wa.me/+966503069108" },
     badge: "🚀 Premium Quality"
   },
   {
@@ -13,8 +13,8 @@ export const heroSlides = [
     title: "Expert Electrical Services",
     subtitle: "Certified technicians ready to help",
     description: "Professional installation, repair & maintenance 24/7",
-    image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=600&fit=crop",
-    cta: { text: "Book Service", href: "https://wa.me/966XXXXXXXXX" },
+    image: "/herosection/hometriangle-blog-electrical-repairs.jpg",
+    cta: { text: "Book Service", href: "https://wa.me/+966503069108" },
     badge: "⚡ Expert Team"
   },
   {
@@ -22,7 +22,7 @@ export const heroSlides = [
     title: "Sanitary & Plumbing Experts",
     subtitle: "Quick & reliable solutions",
     description: "Emergency support available round the clock",
-    image: "1.jpg",
+   image: "/herosection/sanitary.jfif",
     cta: { text: "Get Help Now", href: "https://wa.me/966XXXXXXXXX" },
     badge: "💧 Professional Work"
   }
