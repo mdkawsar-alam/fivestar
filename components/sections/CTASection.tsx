@@ -44,8 +44,8 @@ export function CTASection() {
             {
               icon: "📧",
               title: "Email Us",
-              content: "support@fivestarsa.com",
-              link: "mailto:support@fivestarsa.com"
+              content: "support@futuremark.com",
+              link: "mailto:support@futuremark.com"
             },
             {
               icon: "⏰",

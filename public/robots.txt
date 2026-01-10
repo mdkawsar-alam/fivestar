@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://fivestarsa.com/sitemap.xml
+Sitemap: https://sa.com/sitemap.xml
 
 # Google
 User-agent: Googlebot

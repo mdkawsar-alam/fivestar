@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${product.name_en} / ${product.name_ar} | Fivester`,
       description: product.description,
       images: [product.image],
-      url: `https://fivestarsa.com/products/${product.id}`,
+      url: `https://futuremark.com/products/${product.id}`,
     },
   }
 }
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: Props) {
               price: product.price,
               priceCurrency: product.currency,
               availability: product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-              url: `https://fivestarsa.com/products/${product.id}`,
+              url: `https://futuremark.com/products/${product.id}`,
             },
           }),
         }}

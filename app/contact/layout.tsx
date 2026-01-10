@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Contact Us | Fivester",
     description: "Contact Fivester for hardware and electrical solutions",
     type: "website",
-    url: "https://fivestarsa.com/contact",
+    url: "https://futuremark.com/contact",
   },
 }
 

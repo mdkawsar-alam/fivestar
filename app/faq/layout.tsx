@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FAQ | Fivester",
     type: "website",
-    url: "https://fivestarsa.com/faq",
+    url: "https://sa.com/faq",
   },
 }
 

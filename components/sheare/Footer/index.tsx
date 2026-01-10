@@ -19,8 +19,8 @@ const Footer = () => {
                <Link href="/" className="shrink-0">
          <div className="relative w-16 h-10 md:w-40 md:h-16">
   <Image
-    src="/updatelogo.png"
-    alt="Fivestar Logo"
+    src="/logo3.png"
+    alt="futuremark Logo"
     fill
     className="object-contain"
   />

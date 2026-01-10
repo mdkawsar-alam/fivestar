@@ -60,7 +60,7 @@ export const socials = {
 
 export const siteInfo = {
   name: "Fivester",
-  domain: "https://fivestarsa.com",
+  domain: "https://sa.com",
   description: "Hardware & Electrical Solutions in Saudi Arabia",
   whatsapp: WHATSAPP_NUMBER,
   email: CONTACT_EMAIL,

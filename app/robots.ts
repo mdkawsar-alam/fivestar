@@ -17,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://fivestarsa.com/sitemap.xml',
-    host: 'https://fivestarsa.com',
+    sitemap: 'https://futuremark.com/sitemap.xml',
+    host: 'https://futuremark.com',
   }
 }

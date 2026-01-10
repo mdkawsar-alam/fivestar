@@ -71,7 +71,7 @@ export const useCartStore = create<CartStore>()(
       }
     }),
     {
-      name: 'fivestar-cart',
+      name: 'futuremark-cart',
     }
   )
 )

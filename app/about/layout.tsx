@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "About Fivester",
     description: "10+ years of trusted service",
     type: "website",
-    url: "https://fivestarsa.com/about",
+    url: "https://futuremark.com/about",
   },
 }
 

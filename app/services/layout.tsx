@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Services | Fivester",
     description: "Professional electrical and plumbing services",
     type: "website",
-    url: "https://fivestarsa.com/services",
+    url: "https://sa.com/services",
   },
 }
 

@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     "مستلزمات حمامات الأحساء",
     "متجر أدوات صحية في الأحساء",
   ],
-  metadataBase: new URL("https://fivestarsa.com"),
+  metadataBase: new URL("https://futuremark.com"),
   alternates: {
-    canonical: "https://fivestarsa.com",
+    canonical: "https://futremark.com",
   },
   icons: {
     icon: "/favicon.jpeg",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://fivestarsa.com",
+    url: "https://futremark.com",
     title:
       "Hardware & Sanitary Products Supplier in Al Ahsa, Saudi Arabia | Fivester",
     description:
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     siteName: "Fivester",
     images: [
       {
-        url: "https://fivestarsa.com/og-image.png",
+        url: "https://futremark.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Fivester Hardware & Sanitary Products Al Ahsa",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
       "Hardware & Sanitary Products Supplier in Al Ahsa, Saudi Arabia | Fivester",
     description:
       "Buy hardware and sanitary products in Al Ahsa. Quality electrical & bathroom solutions from trusted brands.",
-    images: ["https://fivestarsa.com/og-image.png"],
+    images: ["https://futremark.com/og-image.png"],
   },
   robots: {
     index: true,

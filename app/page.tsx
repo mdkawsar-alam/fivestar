@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Home | Fivester",
     description: "Hardware & Electrical Solutions in Saudi Arabia",
     type: "website",
-    url: "https://fivestarsa.com",
+    url: "https://futuremark.com",
   },
 }
 
@@ -25,8 +25,8 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Fivester",
-    "url": "https://fivestarsa.com",
-    "logo": "https://fivestarsa.com/logo.png",
+    "url": "https://futuremark.com",
+    "logo": "https://futuremark.com/logo.png",
     "description": "Hardware & Electrical Solutions in Saudi Arabia",
   }
 

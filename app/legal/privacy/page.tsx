@@ -74,9 +74,9 @@ export default function PrivacyPolicy() {
             If you have any questions about this Privacy Policy or our practices, please contact us at:
           </p>
           <p className="mb-6">
-            <strong>Email:</strong> support@fivestarsa.com<br />
-            <strong>Phone:</strong> +966 XX XXXX XXXX<br />
-            <strong>WhatsApp:</strong> +966 XX XXXX XXXX
+            <strong>Email:</strong> support@futuremark.com<br />
+            <strong>Phone:</strong> +966 50 306 9108<br />
+            <strong>WhatsApp:</strong> +966 50 306 9108
           </p>
         </div>
       </div>
